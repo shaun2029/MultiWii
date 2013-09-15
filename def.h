@@ -230,11 +230,12 @@
   #define PPM_PIN_INTERRUPT          attachInterrupt(0, rxInt, RISING); //PIN 0
   #define SPEK_SERIAL_PORT           0
   //RX PIN assignment inside the port //for PORTD
-  #define THROTTLEPIN                2
-  #define ROLLPIN                    4
-  #define PITCHPIN                   5
-  #define YAWPIN                     6
-  #define AUX1PIN                    7
+
+  #define PITCHPIN                   2    //2
+  #define ROLLPIN                    4    //4
+  #define THROTTLEPIN                5    //5
+  #define YAWPIN                     6    //6
+  #define AUX1PIN                    7    //7
   #define AUX2PIN                    0 // optional PIN 8 or PIN 12
   #define AUX3PIN                    1 // unused 
   #define AUX4PIN                    3 // unused 
@@ -248,21 +249,21 @@
   #define RX_PCINT_PIN_PORT          PIND
   #define V_BATPIN                   A3    // Analog PIN 3
   #define PSENSORPIN                 A2    // Analog PIN 2
-  
+
   #if defined(A0_A1_PIN_HEX) || (NUMBER_MOTOR > 6)
     #define SOFT_PWM_1_PIN_HIGH        PORTC |= 1<<0;
     #define SOFT_PWM_1_PIN_LOW         PORTC &= ~(1<<0);
     #define SOFT_PWM_2_PIN_HIGH        PORTC |= 1<<1;
     #define SOFT_PWM_2_PIN_LOW         PORTC &= ~(1<<1);  
   #else
-    #define SOFT_PWM_1_PIN_HIGH        PORTD |= 1<<5;
+    #define SOFT_PWM_1_PIN_HIGH        PORTD |= 1<<5;   
     #define SOFT_PWM_1_PIN_LOW         PORTD &= ~(1<<5);
-    #define SOFT_PWM_2_PIN_HIGH        PORTD |= 1<<6;
+    #define SOFT_PWM_2_PIN_HIGH        PORTD |= 1<<6;   
     #define SOFT_PWM_2_PIN_LOW         PORTD &= ~(1<<6);
   #endif
-  #define SOFT_PWM_3_PIN_HIGH        PORTC |= 1<<2;
+  #define SOFT_PWM_3_PIN_HIGH        PORTC |= 1<<2;   
   #define SOFT_PWM_3_PIN_LOW         PORTC &= ~(1<<2);
-  #define SOFT_PWM_4_PIN_HIGH        PORTB |= 1<<4;
+  #define SOFT_PWM_4_PIN_HIGH        PORTB |= 1<<4;   
   #define SOFT_PWM_4_PIN_LOW         PORTB &= ~(1<<4);
   
   #define SERVO_1_PINMODE            pinMode(A0,OUTPUT); // TILT_PITCH - WING left
@@ -1264,9 +1265,14 @@
   #define BMA180
   #define HMC5883 
   #define BMP085 
+/*
   #define ACC_ORIENTATION(X, Y, Z) {accADC[ROLL]  = -X; accADC[PITCH]  = -Y; accADC[YAW]  =  Z;} 
   #define GYRO_ORIENTATION(X, Y, Z){gyroADC[ROLL] =  Y; gyroADC[PITCH] = -X; gyroADC[YAW] = -Z;} 
   #define MAG_ORIENTATION(X, Y, Z) {magADC[ROLL]  =  X; magADC[PITCH]  =  Y; magADC[YAW]  = -Z;} 
+*/  
+  #define ACC_ORIENTATION(X, Y, Z) {accADC[ROLL]  =  X; accADC[PITCH]  =  Y; accADC[YAW]  =  Z;} 
+  #define GYRO_ORIENTATION(X, Y, Z){gyroADC[ROLL] = -Y; gyroADC[PITCH] =  X; gyroADC[YAW] = -Z;} 
+  #define MAG_ORIENTATION(X, Y, Z) {magADC[ROLL]  = -X; magADC[PITCH]  =  Y; magADC[YAW]  = -Z;} 
   #undef INTERNAL_I2C_PULLUPS 
 #endif
 
