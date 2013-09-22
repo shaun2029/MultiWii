@@ -184,10 +184,10 @@
       //#define ADCACC
 
       /* enforce your individual sensor orientation - even overrides board specific defaults */
-      //#define FORCE_ACC_ORIENTATION(X, Y, Z)  {accADC[ROLL]  =  Y; accADC[PITCH]  = -X; accADC[YAW]  = Z;}
-      //#define FORCE_GYRO_ORIENTATION(X, Y, Z) {gyroADC[ROLL] = -Y; gyroADC[PITCH] =  X; gyroADC[YAW] = Z;}
-      //#define FORCE_MAG_ORIENTATION(X, Y, Z)  {magADC[ROLL]  =  X; magADC[PITCH]  =  Y; magADC[YAW]  = Z;}
-
+      #define FORCE_ACC_ORIENTATION(X, Y, Z)  {accADC[ROLL]  =  X; accADC[PITCH]  =  Y; accADC[YAW]  =  Z;}
+      #define FORCE_GYRO_ORIENTATION(X, Y, Z) {gyroADC[ROLL] = -Y; gyroADC[PITCH] =  X; gyroADC[YAW] = -Z;}
+      #define FORCE_MAG_ORIENTATION(X, Y, Z)  {magADC[ROLL]  =  X; magADC[PITCH]  =  Y; magADC[YAW]  = -Z;}
+      
       /* Board orientation shift */
       /* If you have frame designed only for + mode and you cannot rotate FC phisycally for flying in X mode (or vice versa)
        * you can use one of of this options for virtual sensors rotation by 45 deegres, then set type of multicopter according to flight mode.
@@ -509,8 +509,8 @@
          IMPORTANT! Change low pass filter setting changes PID behaviour, so retune your PID's after changing LPF.*/
       //#define ITG3200_LPF_256HZ     // This is the default setting, no need to uncomment, just for reference
       //#define ITG3200_LPF_188HZ
-      #define ITG3200_LPF_98HZ
-      //#define ITG3200_LPF_42HZ
+      //#define ITG3200_LPF_98HZ
+      #define ITG3200_LPF_42HZ
       //#define ITG3200_LPF_20HZ
       //#define ITG3200_LPF_10HZ      // Use this only in extreme cases, rather change motors and/or props
 
@@ -817,7 +817,7 @@
        with R1=33k and R2=51k
        vbat = [0;1023]*16/VBATSCALE
        must be associated with #define BUZZER ! */
-    //#define VBAT              // uncomment this line to activate the vbat code
+    #define VBAT              // uncomment this line to activate the vbat code
     #define VBATSCALE       77 //131 (*) change this value if readed Battery voltage is different than real voltage
     #define VBATNOMINAL     84 // 8.4V full battery nominal voltage - only used for lcd.telemetry
     #define VBATLEVEL_WARN1  68 // (*) 10,7V
