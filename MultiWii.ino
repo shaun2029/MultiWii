@@ -255,6 +255,7 @@ struct flags_struct {
   uint8_t SMALL_ANGLES_25 :1 ;
   uint8_t CALIBRATE_MAG :1 ;
   uint8_t VARIO_MODE :1;
+  uint8_t EVER_ARMED :1 ;
 } f;
 
 //for log
@@ -806,6 +807,7 @@ void go_arm() {
     ) {
     if(!f.ARMED) { // arm now!
       f.ARMED = 1;
+      f.EVER_ARMED = 1;
       headFreeModeHold = heading;
       #if defined(VBAT)
         if (vbat > conf.no_vbat) vbatMin = vbat;
