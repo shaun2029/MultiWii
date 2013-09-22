@@ -241,6 +241,10 @@ void getEstimatedAttitude(){
       EstM32.V.Z * EstG32.V.X - EstM32.V.X * EstG32.V.Z,
       EstM32.V.Y * invG * sqGX_sqGZ  - (EstM32.V.X * EstG32.V.X + EstM32.V.Z * EstG32.V.Z) * invG * EstG32.V.Y ); 
     heading += MAG_DECLINIATION * 10; //add declination
+    
+    //ShaunS Compensate for board orientation
+    heading += MAG_OFFSET * 10;
+    
     heading = heading /10;
   #endif
 }
